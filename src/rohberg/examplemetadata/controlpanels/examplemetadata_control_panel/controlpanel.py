@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+from plone import schema
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from rohberg.examplemetadata import _
 from rohberg.examplemetadata.interfaces import IRohbergExamplemetadataLayer
-from plone import schema
 from zope.component import adapter
 from zope.interface import Interface
 
