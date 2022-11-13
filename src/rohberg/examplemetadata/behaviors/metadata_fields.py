@@ -19,9 +19,9 @@ class IMetadataFieldsMarker(Interface):
 class IMetadataFields(model.Schema):
     """ """
 
-    project = schema.TextLine(
-        title=_("Project"),
-        description=_("Give in a project name"),
+    informationtype = schema.List(
+        title=_("Type of Information"),
+        value_type=schema.Choice(vocabulary="rohberg.examplemetadata.informationtype"),
         required=False,
     )
 
@@ -33,11 +33,11 @@ class MetadataFields(object):
         self.context = context
 
     @property
-    def project(self):
-        if safe_hasattr(self.context, "project"):
-            return self.context.project
+    def informationtype(self):
+        if safe_hasattr(self.context, "informationtype"):
+            return self.context.informationtype
         return None
 
-    @project.setter
-    def project(self, value):
-        self.context.project = value
+    @informationtype.setter
+    def informationtype(self, value):
+        self.context.informationtype = value
