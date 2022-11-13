@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="rohberg.examplemetadata">
+
+<!-- -*- extra stuff goes here -*- -->
+
+  <records interface="rohberg.examplemetadata.controlpanels.examplemetadata_control_panel.controlpanel.IExamplemetadataControlPanel"
+           prefix="rohberg.examplemetadata.examplemetadata_control_panel" />
+
+
+</registry>
