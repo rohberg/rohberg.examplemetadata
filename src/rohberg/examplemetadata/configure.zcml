@@ -44,5 +44,9 @@
 
     <include package=".controlpanels" />
 
+  <utility
+    name="rohberg.examplemetadata.informationtype"
+    component="rohberg.examplemetadata.vocabularies.InformationtypeVocabularyFactory" />
+
 
 </configure>

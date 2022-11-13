@@ -5,22 +5,64 @@ from plone.restapi.controlpanels import RegistryConfigletPanel
 from plone.z3cform import layout
 from rohberg.examplemetadata import _
 from rohberg.examplemetadata.interfaces import IRohbergExamplemetadataLayer
-from zope import schema
+from plone import schema
 from zope.component import adapter
 from zope.interface import Interface
 
+import json
+
+
+VOCABULARY_SCHEMA = json.dumps(
+    {
+        "type": "object",
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "token": {"type": "string"},
+                        "titles": {
+                            "type": "object",
+                            "properties": {
+                                "lang": {"type": "string"},
+                                "title": {"type": "string"},
+                            },
+                        },
+                    },
+                },
+            }
+        },
+    }
+)
+
 
 class IExamplemetadataControlPanel(Interface):
-    myfield_name = schema.TextLine(
-        title=_(
-            "This is an example field for this control panel",
-        ),
-        description=_(
-            "",
-        ),
-        default="",
+    informationtype = schema.JSONField(
+        title=_("Informationtype"),
+        description=_("Type of information"),
         required=False,
-        readonly=False,
+        schema=VOCABULARY_SCHEMA,
+        widget="vocabularyterms",
+        default={
+            "items": [
+                {
+                    "token": "manual",
+                    "titles": {
+                        "en": "Manual",
+                        "de": "Anleitung",
+                    },
+                },
+                {
+                    "token": "qanda",
+                    "titles": {
+                        "en": "Questions and Answers",
+                        "de": "FAQ",
+                    },
+                },
+            ]
+        },
+        missing_value={"items": []},
     )
 
 
