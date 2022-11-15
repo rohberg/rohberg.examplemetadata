@@ -3,6 +3,7 @@
 from plone import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
+from plone.supermodel.directives import fieldset
 from Products.CMFPlone.utils import safe_hasattr
 from rohberg.examplemetadata import _
 from zope.component import adapter
@@ -24,6 +25,14 @@ class IMetadataFields(model.Schema):
         value_type=schema.Choice(vocabulary="rohberg.examplemetadata.informationtype"),
         required=False,
     )
+    informationsource = schema.List(
+        title=_("Source of Information"),
+        value_type=schema.Choice(
+            vocabulary="rohberg.examplemetadata.informationsource"
+        ),
+        required=False,
+    )
+    fieldset("Meta", fields=["informationtype", "informationsource"])
 
 
 @implementer(IMetadataFields)
@@ -41,3 +50,13 @@ class MetadataFields(object):
     @informationtype.setter
     def informationtype(self, value):
         self.context.informationtype = value
+
+    @property
+    def informationsource(self):
+        if safe_hasattr(self.context, "informationsource"):
+            return self.context.informationsource
+        return None
+
+    @informationsource.setter
+    def informationsource(self, value):
+        self.context.informationsource = value

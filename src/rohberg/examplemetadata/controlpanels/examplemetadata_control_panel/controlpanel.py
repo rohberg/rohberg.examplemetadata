@@ -65,6 +65,33 @@ class IExamplemetadataControlPanel(Interface):
         missing_value={"items": []},
     )
 
+    informationsource = schema.JSONField(
+        title=_("Informationsource"),
+        description=_("Source of information"),
+        required=False,
+        schema=VOCABULARY_SCHEMA,
+        widget="vocabularyterms",
+        default={
+            "items": [
+                {
+                    "token": "meteorologie",
+                    "titles": {
+                        "en": "Meteorologie",
+                        "de": "Meteorologie",
+                    },
+                },
+                {
+                    "token": "geologie",
+                    "titles": {
+                        "en": "Geologie",
+                        "de": "Geologie",
+                    },
+                },
+            ]
+        },
+        missing_value={"items": []},
+    )
+
 
 class ExamplemetadataControlPanel(RegistryEditForm):
     schema = IExamplemetadataControlPanel

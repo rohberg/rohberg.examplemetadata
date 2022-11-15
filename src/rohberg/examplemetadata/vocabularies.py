@@ -13,3 +13,14 @@ def InformationtypeVocabularyFactory(context):
     return SimpleVocabulary.fromItems(
         [[item["token"], item["token"], item["titles"][lang]] for item in items]
     )
+
+
+@provider(IVocabularyFactory)
+def InformationsourceVocabularyFactory(context):
+    name = "rohberg.examplemetadata.examplemetadata_control_panel.informationsource"
+    registry_record_value = api.portal.get_registry_record(name)
+    items = registry_record_value.get("items", [])
+    lang = api.portal.get_current_language()
+    return SimpleVocabulary.fromItems(
+        [[item["token"], item["token"], item["titles"][lang]] for item in items]
+    )

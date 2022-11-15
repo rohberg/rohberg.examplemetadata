@@ -50,6 +50,9 @@
   <utility
     name="rohberg.examplemetadata.informationtype"
     component="rohberg.examplemetadata.vocabularies.InformationtypeVocabularyFactory" />
+  <utility
+    name="rohberg.examplemetadata.informationsource"
+    component="rohberg.examplemetadata.vocabularies.InformationsourceVocabularyFactory" />
 
 
 </configure>
