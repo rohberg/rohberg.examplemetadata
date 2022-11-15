@@ -25,11 +25,9 @@ class IMetadataFields(model.Schema):
         value_type=schema.Choice(vocabulary="rohberg.examplemetadata.informationtype"),
         required=False,
     )
-    informationsource = schema.List(
+    informationsource = schema.Choice(
         title=_("Source of Information"),
-        value_type=schema.Choice(
-            vocabulary="rohberg.examplemetadata.informationsource"
-        ),
+        vocabulary="rohberg.examplemetadata.informationsource",
         required=False,
     )
     fieldset("Meta", fields=["informationtype", "informationsource"])
