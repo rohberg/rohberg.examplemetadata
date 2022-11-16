@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="plone">
+  
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.informationtype">
+      <value key="title" i18n:translate="">Information type</value>
+      <value key="enabled">True</value>
+      <value key="sortable">False</value>
+      <value key="operations">
+        <element>plone.app.querystring.operation.selection.any</element>
+        <element>plone.app.querystring.operation.selection.all</element>
+      </value>
+      <value key="group" i18n:translate="">Metadata</value>
+      <value key="vocabulary">rohberg.examplemetadata.informationtype</value>
+  </records>
+
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           prefix="plone.app.querystring.field.informationsource">
+      <value key="title" i18n:translate="">Information source</value>
+      <value key="enabled">True</value>
+      <value key="sortable">False</value>
+      <value key="operations">
+        <element>plone.app.querystring.operation.string.is</element>
+        <element>plone.app.querystring.operation.string.isNot</element>
+      </value>
+      <value key="group" i18n:translate="">Metadata</value>
+      <value key="vocabulary">rohberg.examplemetadata.informationsource</value>
+  </records>
+
+</registry>
